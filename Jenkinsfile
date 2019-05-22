@@ -14,9 +14,9 @@ pipeline {
     }
     stage('NewStep') {
       parallel {
-        stage('NewStep') {
+        stage('Build') {
           steps {
-            sh 'echo " new Step" '
+            sh 'mvn -B -DskipTests clean package'
           }
         }
         stage('parallelTask') {
