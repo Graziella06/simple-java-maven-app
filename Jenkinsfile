@@ -13,8 +13,17 @@ pipeline {
       }
     }
     stage('NewStep') {
-      steps {
-        sh 'echo " new Step" '
+      parallel {
+        stage('NewStep') {
+          steps {
+            sh 'echo " new Step" '
+          }
+        }
+        stage('parallelTask') {
+          steps {
+            echo '" PARALLEL TASK"'
+          }
+        }
       }
     }
   }
