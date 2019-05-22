@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'sh \'mvn test\''
+        sh 'mvn test'
       }
       post {
             always {
@@ -24,7 +24,7 @@ pipeline {
     }
     stage('Deliver') {
       steps {
-        sh '\'./jenkins/scripts/deliver.sh\''
+        sh './jenkins/scripts/deliver.sh'
       }
     }
   }
