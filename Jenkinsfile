@@ -12,18 +12,14 @@ pipeline {
         sh 'mvn -B -DskipTests clean package'
       }
     }
-    stage('NewStep') {
-      parallel {
-        stage('Build') {
-          steps {
-            sh 'mvn -B -DskipTests clean package'
-          }
-        }
-        stage('parallelTask') {
-          steps {
-            echo '" PARALLEL TASK"'
-          }
-        }
+    stage('Test') {
+      steps {
+        sh 'sh \'mvn test\''
+      }
+    }
+    stage('Deliver') {
+      steps {
+        sh '\'./jenkins/scripts/deliver.sh\''
       }
     }
   }
